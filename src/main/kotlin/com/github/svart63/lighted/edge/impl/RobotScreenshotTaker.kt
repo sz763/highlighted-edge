@@ -15,4 +15,9 @@ class RobotScreenshotTaker : ScreenshotTaker {
     private val width = screenDimension.width
 
     override fun top(height: Int): BufferedImage = robot.createScreenCapture(Rectangle(0, 0, width, height))
+    override fun right(width: Int): BufferedImage {
+        return robot.createScreenCapture(Rectangle(this.width - width, 0, width, height))
+    }
+
+    override fun left(width: Int): BufferedImage = robot.createScreenCapture(Rectangle(0, 0, width, height))
 }
