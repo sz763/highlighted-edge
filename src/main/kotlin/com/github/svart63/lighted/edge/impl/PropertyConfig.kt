@@ -24,7 +24,7 @@ class PropertyConfig(private val configFile: String = "./config.properties") : C
     }
 
     override fun booleanValue(name: String): Boolean {
-        return strValue(name).trim().toBooleanStrict()
+        return strValue(name).trim().toBoolean()
     }
 
 }
