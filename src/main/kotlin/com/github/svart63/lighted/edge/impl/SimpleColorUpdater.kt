@@ -12,7 +12,7 @@ class SimpleColorUpdater @Inject constructor(
     private val colorDetector: ColorDetector,
     private val screenshotTaker: ScreenshotTaker,
     private val commApi: CommDevice,
-    private val config: Config
+    config: Config
 ) : ColorUpdater {
     private val log = LoggerFactory.getLogger(javaClass)
     private lateinit var thread: Thread
@@ -52,7 +52,7 @@ class SimpleColorUpdater @Inject constructor(
         }
     }
 
-    private fun pushToDevice(writeBuffer: ByteArray, images: List<BufferedImage>) {
+    internal fun pushToDevice(writeBuffer: ByteArray, images: List<BufferedImage>) {
         val map: ByteArray = images.flatMap { bufferedImage ->
             val color = colorDetector.getColor(bufferedImage)
             toByteArray(writeBuffer, color).asList()
@@ -65,9 +65,9 @@ class SimpleColorUpdater @Inject constructor(
     }
 
     internal fun toByteArray(buffer: ByteArray, color: Int): ByteArray {
-        buffer[2] = (color shr 16).toByte()
-        buffer[1] = (color shr 8).toByte()
-        buffer[0] = (color shr 0).toByte()
+        buffer[2] = (color shr 16 and 0xff).toByte()
+        buffer[1] = (color shr 8 and 0xff).toByte()
+        buffer[0] = (color and 0xff).toByte()
         return buffer
     }
 }
