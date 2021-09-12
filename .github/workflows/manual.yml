@@ -1,4 +1,4 @@
-name: CI
+name: build
 
 on: [push]
 
@@ -14,4 +14,12 @@ jobs:
           java-version: '11'
           distribution: 'adopt'
       - name: Build with Maven
-        run: mvn --batch-mode --update-snapshots verify
+        run: mvn --batch-mode --update-snapshots package
+      - run: mv target/highlighted-edge.jar highlighted-edge.jar
+      - name: Build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: highlighted-edge
+          path: |
+            highlighted-edge.jar
+            config.properties
