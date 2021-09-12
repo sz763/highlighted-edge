@@ -15,8 +15,8 @@ jobs:
           distribution: 'adopt'
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots package
+      - run: mv target/highlighted-edge.jar highlighted-edge.jar
       - name: Build artifacts
-        run: mv target/highlighted-edge.jar highlighted-edge.jar
         uses: actions/upload-artifact@v2
         with:
           name: highlighted-edge
