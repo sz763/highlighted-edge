@@ -32,7 +32,7 @@ class SimpleColorUpdater @Inject constructor(
                 val top = screenshotTaker.top(edgeHeight)
                 val topImage = imageSplitter.horizontalSplit(edgeHorizontal, top)
                 val left = screenshotTaker.left(edgeHeight)
-                val leftImage = imageSplitter.verticalSplit(edgeVertical, left)
+                val leftImage = imageSplitter.verticalSplit(edgeVertical, left).reversed()
                 list.addAll(leftImage)
                 list.addAll(topImage)
                 list.addAll(rightImage)
