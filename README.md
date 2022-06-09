@@ -13,7 +13,7 @@ Take screenshot of edge -> split to regions -> detect common color of region (ea
 |refresh.rate|10|Low refresh rate can affect CPU, hight refresh rate will produce lag between picture on screen and LED strip color. I use around 100 on Raspberry Pi 4|
 |edge.horizontal.leds|35|Count of LED's on strip by horizontal (don't forget set same value in arduino code)|
 |edge.vertical.leds|19|Count of LED's on strip by vertical (don't forget set same value in arduino code)|
-|edge.height|60|The region hight|
+|edge.height|60|The region height|
 |edge.width|60|The region width|
 |comm.device.name|COM3|Plugged in arduino device name. `COM3` or any other value for Windows. `/dev/ttyUSB0` or any other value for for Linux|
 |comm.device.baudRate|115200|Bits per second that will be send to arduino (this value should be same in arduino)|
